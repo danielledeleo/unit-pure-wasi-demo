@@ -1,0 +1,16 @@
+[package]
+name = "bca-wasi"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[package.metadata.component]
+package = "component:hello-wasi-http"
+# This tells cargo-component to use a special adapter, which doesn't depend on
+# `get-environment` or other things not present in the proxy world.
+proxy = true
+
+[dependencies]
+wasi = { path = "../wasi" }
